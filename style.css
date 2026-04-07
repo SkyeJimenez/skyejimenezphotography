@@ -1,0 +1,117 @@
+/* Reset some basic elements */
+body, h1, h2, h3, h4, h5, h6, p, ul, li, figure, figcaption {
+    margin: 0;
+    padding: 0;
+}
+
+/* General */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+}
+
+h1, h2, h3, h4 {
+    font-weight: 700;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* Navbar */
+.navbar-nav .nav-link.active {
+    font-weight: bold;
+    color: #ffc107 !important;
+}
+
+/* Header Video */
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+}
+
+header p {
+    font-size: 1.2rem;
+    text-shadow: 1px 1px 6px rgba(0,0,0,0.6);
+}
+
+header .btn {
+    font-weight: 600;
+}
+
+/* Overlay container for homepage highlights */
+.overlay-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.overlay-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0,0,0,0.6);
+    border-radius: 0.25rem;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    max-width: 90%;
+}
+
+.overlay-container:hover .overlay-text {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.05);
+}
+
+.overlay-text h4 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.overlay-text p {
+    font-size: 0.95rem;
+}
+
+/* Gallery Images */
+.gallery-img {
+    margin-bottom: 1rem;
+    border-radius: 0.25rem;
+}
+
+/* Services Packages */
+.service-img {
+    width: 100%;
+    border-radius: 0.25rem;
+    margin-bottom: 0.5rem;
+}
+
+/* About Page Image Alignment */
+.about-img {
+    max-width: 300px;
+    float: right;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    border-radius: 0.25rem;
+}
+
+/* Footer */
+footer {
+    font-size: 0.9rem;
+    background-color: #343a40;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.8rem;
+    }
+    header p {
+        font-size: 1rem;
+    }
+    .about-img {
+        float: none;
+        display: block;
+        margin: 0 auto 20px;
+    }
+}
