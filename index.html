@@ -44,7 +44,8 @@
   <div class="position-absolute top-50 start-50 translate-middle px-3">
     <h1>Capturing the Heart of Soccer</h1>
 
-    <h2 id="greeting"></h2>
+    <!-- GREETING GOES HERE -->
+    <h2 id="greeting" class="mt-2 fw-bold"></h2>
 
     <p>Dynamic sports photography by Skye Jimenez</p>
 
@@ -61,25 +62,16 @@
 
     <div class="row g-4">
 
-      <!-- Image 1 -->
       <div class="col-md-4">
-        <div class="position-relative">
-          <img src="soccer1.jpg" class="img-fluid rounded" alt="Raw Emotion">
-        </div>
+        <img src="soccer1.jpg" class="img-fluid rounded" alt="Raw Emotion">
       </div>
 
-      <!-- Image 2 -->
       <div class="col-md-4">
-        <div class="position-relative">
-          <img src="soccer10.jpg" class="img-fluid rounded" alt="Action Shot">
-        </div>
+        <img src="soccer10.jpg" class="img-fluid rounded" alt="Action Shot">
       </div>
 
-      <!-- Image 3 -->
       <div class="col-md-4">
-        <div class="position-relative">
-          <img src="soccer11.JPG" class="img-fluid rounded" alt="Game Moment">
-        </div>
+        <img src="soccer11.JPG" class="img-fluid rounded" alt="Game Moment">
       </div>
 
     </div>
@@ -92,8 +84,26 @@
   &copy; 2026 Skye Jimenez Photography
 </footer>
 
-<!-- JS (IMPORTANT: greeting must be loaded after page loads) -->
-<script src="greetings.js"></script>
+<!-- JAVASCRIPT GREETING -->
+<script>
+function getGreeting() {
+    const hour = new Date().getHours();
+    let greeting;
+
+    if (hour < 12) {
+        greeting = "Good Morning! Welcome to my website 🌅";
+    } else if (hour < 18) {
+        greeting = "Good Afternoon! Thanks for stopping by ☀️";
+    } else {
+        greeting = "Good Evening! Hope you enjoy your visit 🌙";
+    }
+
+    document.getElementById("greeting").textContent = greeting;
+}
+
+getGreeting();
+</script>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
