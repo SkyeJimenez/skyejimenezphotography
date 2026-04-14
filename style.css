@@ -114,4 +114,24 @@ footer {
         display: block;
         margin: 0 auto 20px;
     }
+    
+ /* Greeting styling */
+#greeting {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: #f5e6c8; /* soft gold tone */
+  margin: 10px 0;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeSlideIn 1.2s ease forwards;
+}
+
+/* Smooth fade + slide animation */
+@keyframes fadeSlideIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
