@@ -45,8 +45,116 @@
     <h1>Capturing the Heart of Soccer</h1>
 
     <!-- GREETING GOES HERE -->
+   <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skye Jimenez Photography</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">
+      <img src="20.png" alt="Skye Jimenez Photography" style="height: 50px;">
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+        <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Header / Hero -->
+<header class="position-relative text-center text-white" style="height: 60vh; overflow: hidden;">
+
+  <video autoplay muted loop playsinline class="w-100 h-100" style="object-fit: cover;" poster="aerialsoccer.jpg">
+    <source src="aerial_soccer.mp4" type="video/mp4">
+  </video>
+
+  <div class="position-absolute top-50 start-50 translate-middle px-3">
+    <h1>Capturing the Heart of Soccer</h1>
+
+    <!-- GREETING GOES HERE -->
     <h2 id="greeting" class="mt-2 fw-bold"></h2>
 
+    <p>Dynamic sports photography by Skye Jimenez</p>
+
+    <a href="gallery.html" class="btn btn-primary mt-3">View Portfolio</a>
+  </div>
+
+</header>
+
+<!-- Highlights -->
+<main class="container my-5">
+
+  <section class="my-5">
+    <h2 class="text-center mb-4">Soccer Photography Highlights</h2>
+
+    <div class="row g-4">
+
+      <div class="col-md-4">
+        <img src="soccer1.jpg" class="img-fluid rounded" alt="Raw Emotion">
+      </div>
+
+      <div class="col-md-4">
+        <img src="soccer10.jpg" class="img-fluid rounded" alt="Action Shot">
+      </div>
+
+      <div class="col-md-4">
+        <img src="soccer11.JPG" class="img-fluid rounded" alt="Game Moment">
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="bg-dark text-white text-center p-3 mt-5">
+  &copy; 2026 Skye Jimenez Photography
+</footer>
+
+<!-- JAVASCRIPT GREETING -->
+<script>
+function getGreeting() {
+    const hour = new Date().getHours();
+    let greeting;
+
+    if (hour < 12) {
+        greeting = "Good Morning! Welcome to my website 🌅";
+    } else if (hour < 18) {
+        greeting = "Good Afternoon! Thanks for stopping by ☀️";
+    } else {
+        greeting = "Good Evening! Hope you enjoy your visit 🌙";
+    }
+
+    document.getElementById("greeting").textContent = greeting;
+}
+
+getGreeting();
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
     <p>Dynamic sports photography by Skye Jimenez</p>
 
     <a href="gallery.html" class="btn btn-primary mt-3">View Portfolio</a>
