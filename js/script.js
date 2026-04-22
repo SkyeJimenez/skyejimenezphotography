@@ -23,7 +23,7 @@ function showOfferExpiry() {
     let formattedDate = expireDate.toLocaleDateString('en-US', options);
 
     document.getElementById("offer").textContent =
-        "⚡ Limited Time Offer! 20% off Book now — offer expires on 5/28 " + formattedDate;
+        "⚡ Limited Time Offer! 20% off Book now — offer expires" + formattedDate;
 }
 
 getGreeting();
