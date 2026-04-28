@@ -6,7 +6,7 @@
 <title>Services - Skye Jimenez Photography</title>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -32,76 +32,78 @@
   </div>
 </nav>
 
-<!-- PAGE CONTENT -->
-<main class="container my-5">
+<!-- HERO -->
+<header class="bg-dark text-white text-center py-5">
+  <h1>Photography Services</h1>
+  <p>Capturing every moment of the game</p>
+</header>
 
-  <h2 class="text-center mb-5">Full Game Photography Packages</h2>
+<!-- SERVICES -->
+<main class="container my-5">
 
   <div class="row text-center g-5">
 
     <div class="col-md-4">
-      <img src="soccer3.jpg" class="img-fluid rounded mb-3" alt="Full Game Package">
+      <img src="soccer3.jpg" class="img-fluid rounded mb-3" alt="Full Game">
       <h4>Full Game Package</h4>
-      <p>Capture every moment of a single game. Includes all action shots and highlights.</p>
-      <p><strong>Price: $100 per game</strong></p>
+      <p>Complete coverage of one game with action shots and highlights.</p>
+      <p><strong>$100 per game</strong></p>
     </div>
 
     <div class="col-md-4">
       <img src="soccer5.jpg" class="img-fluid rounded mb-3" alt="Team Package">
-      <h4>Team Full Game Package</h4>
-      <p>Includes team portraits, all game action shots, and full gallery delivery.</p>
-      <p><strong>Price: $300 per team</strong></p>
+      <h4>Team Package</h4>
+      <p>Includes team portraits and full game coverage.</p>
+      <p><strong>$300 per team</strong></p>
     </div>
 
     <div class="col-md-4">
-      <img src="soccer11.jpg" class="img-fluid rounded mb-3" alt="Tournament Package">
+      <img src="soccer11.jpg" class="img-fluid rounded mb-3" alt="Tournament">
       <h4>Tournament Package</h4>
-      <p>Full event coverage including highlights and action shots across multiple games.</p>
-      <p><strong>Price: $600 per tournament</strong></p>
+      <p>Full tournament coverage across multiple games and events.</p>
+      <p><strong>$600 per tournament</strong></p>
     </div>
 
   </div>
 
-  <!-- ✅ CHAPTER 4 OUTPUT AREA -->
+  <!-- CHAPTER 4 OUTPUT -->
   <div class="mt-5">
-    <h3>Service Availability</h3>
-    <div id="serviceList" class="p-3 border rounded"></div>
+    <h3 class="text-center">Service Availability</h3>
+    <div id="serviceList" class="border rounded p-3 mt-3"></div>
   </div>
 
 </main>
 
-<!-- ✅ CHAPTER 4 DECISION LOOP (FIXED) -->
+<!-- FOOTER -->
+<footer class="bg-dark text-white text-center p-3 mt-5">
+  &copy; 2026 Skye Jimenez Photography
+</footer>
+
+<!-- BOOTSTRAP JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- CHAPTER 4 JAVASCRIPT -->
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 
   const services = [
     { name: "Full Game Package", available: true },
-    { name: "Team Full Game Package", available: true },
+    { name: "Team Package", available: true },
     { name: "Tournament Package", available: false }
   ];
 
   let output = "";
-  let i = 0;
 
-  // Chapter 4 Decision Loop
-  while (i < services.length) {
+  for (let i = 0; i < services.length; i++) {
 
     if (services[i].available) {
       output += "📸 " + services[i].name + " — Available Now<br>";
     } else {
       output += "⛔ " + services[i].name + " — Currently Unavailable<br>";
     }
-
-    i++;
   }
 
-  const box = document.getElementById("serviceList");
-
-  if (box) {
-    box.innerHTML = output;
-  } else {
-    console.log("serviceList not found");
-  }
+  document.getElementById("serviceList").innerHTML = output;
 
 });
 </script>
