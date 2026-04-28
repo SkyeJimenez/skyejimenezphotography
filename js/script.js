@@ -1,10 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
 
   // =========================
-  // GREETING
+  // GREETING (FIXED)
   // =========================
   const hour = new Date().getHours();
-  let greeting;
+  let greeting = "";
 
   if (hour < 12) {
     greeting = "Good Morning! Welcome to my website 🌅";
@@ -20,69 +20,41 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // =========================
-  // OFFER FEATURE (CHAPTER 3)
+  // OFFER (CHAPTER 3)
   // =========================
-  const hotel = {
-    name: "Skye Jimenez Photography",
-    roomRate: 240,
-    discount: 15,
-    offerPrice: function () {
-      return this.roomRate * (1 - this.discount / 100);
-    }
-  };
+  const price = 240;
+  const discount = 15;
 
   const roomRateEl = document.getElementById("roomRate");
   const specialRateEl = document.getElementById("specialRate");
   const offerEndsEl = document.getElementById("offerEnds");
 
-  if (roomRateEl) roomRateEl.textContent = "$" + hotel.roomRate.toFixed(2);
-  if (specialRateEl) specialRateEl.textContent = "$" + hotel.offerPrice().toFixed(2);
+  const discountedPrice = price * (1 - discount / 100);
+
+  if (roomRateEl) {
+    roomRateEl.textContent = "$" + price.toFixed(2);
+  }
+
+  if (specialRateEl) {
+    specialRateEl.textContent = "$" + discountedPrice.toFixed(2);
+  }
 
   function offerExpires() {
     const today = new Date();
-    const weekFromToday = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
+    const futureDate = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
 
     const options = {
-      weekday: 'long',
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric"
     };
 
-    return "Offer expires on " +
-      weekFromToday.toLocaleDateString("en-US", options);
+    return "Offer expires on " + futureDate.toLocaleDateString("en-US", options);
   }
 
   if (offerEndsEl) {
-    offerEndsEl.innerHTML = offerExpires();
-  }
-
-  // =========================
-  // SERVICES LIST
-  // =========================
-  const services = [
-    { name: "Full Game Package", available: true },
-    { name: "Team Full Game Package", available: true },
-    { name: "Tournament Package", available: false }
-  ];
-
-  let output = "";
-  let i = 0;
-
-  while (i < services.length) {
-
-    if (services[i].available === true) {
-      output += "📸 " + services[i].name + " — Available Now<br>";
-    } else {
-      output += "⛔ " + services[i].name + " — Currently Unavailable<br>";
-    }
-
-    i++;
-  }
-
-  const box = document.getElementById("serviceList");
-  if (box) {
-    box.innerHTML = output;
+    offerEndsEl.textContent = offerExpires();
   }
 
 });
