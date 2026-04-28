@@ -1,4 +1,3 @@
-
 function getGreeting() {
     const hour = new Date().getHours();
     let greeting;
