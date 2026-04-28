@@ -1,7 +1,8 @@
-
 document.addEventListener("DOMContentLoaded", function () {
 
+  // =========================
   // GREETING
+  // =========================
   const hour = new Date().getHours();
   let greeting;
 
@@ -18,7 +19,9 @@ document.addEventListener("DOMContentLoaded", function () {
     greetingEl.textContent = greeting;
   }
 
-  // OFFER
+  // =========================
+  // OFFER FEATURE (CHAPTER 3)
+  // =========================
   const hotel = {
     name: "Skye Jimenez Photography",
     roomRate: 240,
@@ -39,38 +42,47 @@ document.addEventListener("DOMContentLoaded", function () {
     const today = new Date();
     const weekFromToday = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
 
-    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    const options = {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    };
 
-    return "Offer expires on " + weekFromToday.toLocaleDateString("en-US", options);
+    return "Offer expires on " +
+      weekFromToday.toLocaleDateString("en-US", options);
   }
 
   if (offerEndsEl) {
     offerEndsEl.innerHTML = offerExpires();
   }
 
-});
+  // =========================
+  // SERVICES LIST
+  // =========================
+  const services = [
+    { name: "Full Game Package", available: true },
+    { name: "Team Full Game Package", available: true },
+    { name: "Tournament Package", available: false }
+  ];
 
-    const services = [
-        { name: "Full Game Package", available: true },
-        { name: "Team Full Game Package", available: true },
-        { name: "Tournament Package", available: false }
-    ];
+  let output = "";
+  let i = 0;
 
-    let output = "";
-    let i = 0;
+  while (i < services.length) {
 
-    while (i < services.length) {
-
-        if (services[i].available === true) {
-            output += "📸 " + services[i].name + " — Available Now<br>";
-        } else {
-            output += "⛔ " + services[i].name + " — Currently Unavailable<br>";
-        }
-
-        i++;
+    if (services[i].available === true) {
+      output += "📸 " + services[i].name + " — Available Now<br>";
+    } else {
+      output += "⛔ " + services[i].name + " — Currently Unavailable<br>";
     }
 
-    const box = document.getElementById("serviceList");
-    if (box) box.innerHTML = output;
+    i++;
+  }
+
+  const box = document.getElementById("serviceList");
+  if (box) {
+    box.innerHTML = output;
+  }
 
 });
