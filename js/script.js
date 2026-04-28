@@ -19,21 +19,28 @@ function showOfferExpiry() {
 
     expireDate.setDate(today.getDate() + 7);
 
-    let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    let options = {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    };
+
     let formattedDate = expireDate.toLocaleDateString('en-US', options);
 
     document.getElementById("offer").textContent =
-        "⚡ Limited Time Offer! 20% off Book now — offer expires" + formattedDate;
+        "⚡ Limited Time Offer! 20% off bookings — offer expires " + formattedDate;
 }
 
+// Run functions
 getGreeting();
 showOfferExpiry();
 
+// Services loop
 var services = ['Family Photography', 'Sports Media', 'Portrait Sessions'];
-var i;
 var serviceList = '';
 
-for (i = 0; i < services.length; i++) {
+for (var i = 0; i < services.length; i++) {
     serviceList += services[i] + '<br>';
 }
 
