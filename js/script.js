@@ -1,3 +1,4 @@
+
 function getGreeting() {
     const hour = new Date().getHours();
     let greeting;
@@ -10,8 +11,10 @@ function getGreeting() {
         greeting = "Good Evening! Hope you enjoy your visit 🌙";
     }
 
-    document.getElementById("greeting").textContent = greeting;
+    const g = document.getElementById("greeting");
+    if (g) g.textContent = greeting;
 }
+
 
 function showOfferExpiry() {
     let today = new Date();
@@ -19,65 +22,57 @@ function showOfferExpiry() {
 
     expireDate.setDate(today.getDate() + 7);
 
-    let options = {
+    let formattedDate = expireDate.toLocaleDateString('en-US', {
         weekday: 'long',
         year: 'numeric',
         month: 'long',
         day: 'numeric'
-    };
+    });
 
-    let formattedDate = expireDate.toLocaleDateString('en-US', options);
-
-    document.getElementById("offer").textContent =
-        "⚡ Limited Time Offer! 20% off bookings — offer expires " + formattedDate;
+    const o = document.getElementById("offer");
+    if (o) {
+        o.textContent =
+            "⚡ Limited Time Offer! 20% off bookings — offer expires " + formattedDate;
+    }
 }
 
-// Run functions
-getGreeting();
-showOfferExpiry();
 
-// Services loop
-var services = ['Family Photography', 'Sports Media', 'Portrait Sessions'];
-var serviceList = '';
+// ======================
+// CHAPTER 4 DECISION LOOP (ONLY ONE)
+// ======================
+function loadServices() {
 
-for (var i = 0; i < services.length; i++) {
-    serviceList += services[i] + '<br>';
-}
+    const services = [
+        { name: "Portrait Session", available: true },
+        { name: "Wedding Package", available: true },
+        { name: "Mini Session", available: false },
+        { name: "Event Coverage", available: true }
+    ];
 
-document.getElementById('services').innerHTML = serviceList;
+    let output = "";
+    let i = 0;
 
-<script>
-document.addEventListener("DOMContentLoaded", function () {
+    while (i < services.length) {
 
-  const services = [
-    { name: "Portrait Session", available: true },
-    { name: "Wedding Package", available: true },
-    { name: "Mini Session", available: false },
-    { name: "Event Coverage", available: true }
-  ];
+        if (services[i].available) {
+            output += "📸 " + services[i].name + " — Available Now<br>";
+        } else {
+            output += "⛔ " + services[i].name + " — Currently Unavailable<br>";
+        }
 
-  let output = "";
-  let i = 0;
-
-  // Chapter 4 decision loop
-  while (i < services.length) {
-
-    if (services[i].available === true) {
-      output += "📸 " + services[i].name + " — Available Now<br>";
-    } else {
-      output += "⛔ " + services[i].name + " — Currently Unavailable<br>";
+        i++;
     }
 
-    i++;
-  }
+    const el = document.getElementById("serviceList");
+    if (el) el.innerHTML = output;
+}
 
-  const el = document.getElementById("serviceList");
 
-  if (el) {
-    el.innerHTML = output;
-  } else {
-    console.log("ERROR: serviceList element not found");
-  }
-
+// ======================
+// RUN EVERYTHING (IMPORTANT)
+// ======================
+document.addEventListener("DOMContentLoaded", function () {
+    getGreeting();
+    showOfferExpiry();
+    loadServices();
 });
-</script>
