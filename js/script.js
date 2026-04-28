@@ -28,3 +28,13 @@ function showOfferExpiry() {
 
 getGreeting();
 showOfferExpiry();
+
+var services = ['Family Photography', 'Sports Media', 'Portrait Sessions'];
+var i;
+var serviceList = '';
+
+for (i = 0; i < services.length; i++) {
+    serviceList += services[i] + '<br>';
+}
+
+document.getElementById('services').innerHTML = serviceList;
