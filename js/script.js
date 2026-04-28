@@ -47,3 +47,30 @@ for (var i = 0; i < services.length; i++) {
 }
 
 document.getElementById('services').innerHTML = serviceList;
+
+function loadServices() {
+
+    const services = [
+        { name: "Family Photography", available: true },
+        { name: "Sports Media", available: true },
+        { name: "Portrait Sessions", available: false },
+        { name: "Event Coverage", available: true }
+    ];
+
+    let output = "";
+    let i = 0;
+
+    // CHAPTER 4 DECISION LOOP (REQUIRED)
+    while (i < services.length) {
+
+        if (services[i].available) {
+            output += "📸 " + services[i].name + " — Available Now<br>";
+        } else {
+            output += "⛔ " + services[i].name + " — Currently Unavailable<br>";
+        }
+
+        i++;
+    }
+
+    document.getElementById("services").innerHTML = output;
+}
