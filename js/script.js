@@ -29,28 +29,21 @@ document.addEventListener("DOMContentLoaded", function () {
   const specialRateEl = document.getElementById("specialRate");
   const offerEndsEl = document.getElementById("offerEnds");
 
-  const discountedPrice = price * (1 - discount / 100);
+  const finalPrice = price * (1 - discount / 100);
 
   if (roomRateEl) {
     roomRateEl.textContent = "$" + price.toFixed(2);
   }
 
   if (specialRateEl) {
-    specialRateEl.textContent = "$" + discountedPrice.toFixed(2);
+    specialRateEl.textContent = "$" + finalPrice.toFixed(2);
   }
 
   function offerExpires() {
     const today = new Date();
-    const futureDate = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
+    const future = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
 
-    const options = {
-      weekday: "long",
-      year: "numeric",
-      month: "long",
-      day: "numeric"
-    };
-
-    return "Offer expires on " + futureDate.toLocaleDateString("en-US", options);
+    return "Offer expires on " + future.toDateString();
   }
 
   if (offerEndsEl) {
