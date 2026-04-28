@@ -16,24 +16,7 @@ function getGreeting() {
     }
 }
 
-  const price = 240;
-  const discount = 15;
-
-  const roomRateEl = document.getElementById("roomRate");
-  const specialRateEl = document.getElementById("specialRate");
-  const offerEndsEl = document.getElementById("offerEnds");
-
-  const finalPrice = price * (1 - discount / 100);
-
-  if (roomRateEl) {
-    roomRateEl.textContent = "$" + price.toFixed(2);
-  }
-
-  if (specialRateEl) {
-    specialRateEl.textContent = "$" + finalPrice.toFixed(2);
-  }
-
-  function offerExpires() {
+ function offerExpires() {
     const today = new Date();
     const future = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
 
@@ -43,5 +26,18 @@ function getGreeting() {
   if (offerEndsEl) {
     offerEndsEl.textContent = offerExpires();
   }
+  function offerExpires() {
+        const today = new Date();
+        const year = today.getFullYear();
 
+        // Set end of April
+        const endOfApril = new Date(year, 3, 30); // Month is 0-based (3 = April)
+
+        return "🔥 20% OFF — Valid until " + endOfApril.toDateString();
+    }
+
+    if (offerEndsEl) {
+        offerEndsEl.textContent = offerExpires();
+    }
+}
 });
