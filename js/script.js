@@ -1,8 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-  // =========================
-  // GREETING (FIXED)
-  // =========================
   const hour = new Date().getHours();
   let greeting = "";
 
@@ -19,9 +16,6 @@ document.addEventListener("DOMContentLoaded", function () {
     greetingEl.textContent = greeting;
   }
 
-  // =========================
-  // OFFER (CHAPTER 3)
-  // =========================
   const price = 240;
   const discount = 15;
 
