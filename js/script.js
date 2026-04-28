@@ -1,3 +1,6 @@
+// =========================
+// GREETING MESSAGE (Chapter 3 style logic)
+// =========================
 function getGreeting() {
     const hour = new Date().getHours();
     let greeting;
@@ -13,6 +16,10 @@ function getGreeting() {
     document.getElementById("greeting").textContent = greeting;
 }
 
+
+// =========================
+// OFFER EXPIRATION FEATURE
+// =========================
 function showOfferExpiry() {
     let today = new Date();
     let expireDate = new Date();
@@ -32,16 +39,37 @@ function showOfferExpiry() {
         "⚡ Limited Time Offer! 20% off bookings — offer expires " + formattedDate;
 }
 
-// Run functions
-getGreeting();
-showOfferExpiry();
 
-// Services loop
-var services = ['Family Photography', 'Sports Media', 'Portrait Sessions'];
-var serviceList = '';
+// =========================
+// CHAPTER 4 DECISION LOOP (FIXED + REQUIRED)
+// =========================
+function loadServices() {
 
-for (var i = 0; i < services.length; i++) {
-    serviceList += services[i] + '<br>';
+    var services = [
+        { name: 'Family Photography', available: true },
+        { name: 'Sports Media', available: true },
+        { name: 'Portrait Sessions', available: false },
+        { name: 'Event Coverage', available: true }
+    ];
+
+    var serviceList = "";
+
+    for (var i = 0; i < services.length; i++) {
+
+        if (services[i].available === true) {
+            serviceList += "📸 " + services[i].name + " — Available<br>";
+        } else {
+            serviceList += "⛔ " + services[i].name + " — Currently Unavailable<br>";
+        }
+    }
+
+    document.getElementById("services").innerHTML = serviceList;
 }
 
-document.getElementById('services').innerHTML = serviceList;
+
+// =========================
+// RUN EVERYTHING
+// =========================
+getGreeting();
+showOfferExpiry();
+loadServices();
