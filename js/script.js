@@ -1,3 +1,4 @@
+
 function getGreeting() {
     const hour = new Date().getHours();
     let greeting;
@@ -38,27 +39,31 @@ function showOfferExpiry() {
 
 document.addEventListener("DOMContentLoaded", function () {
 
-  const services = [
-    { name: "Full Game Package", available: true },
-    { name: "Team Full Game Package", available: true },
-    { name: "Tournament Package", available: false }
-  ];
+    // 🔥 REQUIRED FUNCTION CALLS
+    getGreeting();
+    showOfferExpiry();
 
-  let output = "";
-  let i = 0;
+    const services = [
+        { name: "Full Game Package", available: true },
+        { name: "Team Full Game Package", available: true },
+        { name: "Tournament Package", available: false }
+    ];
 
-  while (i < services.length) {
+    let output = "";
+    let i = 0;
 
-    if (services[i].available === true) {
-      output += "📸 " + services[i].name + " — Available Now<br>";
-    } else {
-      output += "⛔ " + services[i].name + " — Currently Unavailable<br>";
+    while (i < services.length) {
+
+        if (services[i].available === true) {
+            output += "📸 " + services[i].name + " — Available Now<br>";
+        } else {
+            output += "⛔ " + services[i].name + " — Currently Unavailable<br>";
+        }
+
+        i++;
     }
 
-    i++;
-  }
-
-  const box = document.getElementById("serviceList");
-  if (box) box.innerHTML = output;
+    const box = document.getElementById("serviceList");
+    if (box) box.innerHTML = output;
 
 });
