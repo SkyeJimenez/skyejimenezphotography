@@ -36,9 +36,6 @@ function showOfferExpiry() {
 }
 
 
-// ======================
-// CHAPTER 4 DECISION LOOP
-// ======================
 document.addEventListener("DOMContentLoaded", function () {
 
   const services = [
