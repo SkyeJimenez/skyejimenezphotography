@@ -41,10 +41,10 @@ function showOfferExpiry() {
 document.addEventListener("DOMContentLoaded", function () {
 
   const services = [
-    { name: "Portrait Session", available: true },
-    { name: "Wedding Package", available: true },
-    { name: "Mini Session", available: false },
-    { name: "Event Coverage", available: true }
+    { name: "Full Game Session", available: true },
+    { name: "Team Full Game Package", available: true },
+    { name: "Tournament Package", available: false },
+   
   ];
 
   let output = "";
