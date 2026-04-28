@@ -55,21 +55,29 @@
 
   </div>
 
-  <h3 id="greeting"></h3>
-<p id="offer"></p>
+// Chapter 4: Decision Loop Feature (Services Page)
 
-<h4>Photography Services</h4>
-<p id="services"></p>
-<footer class="bg-dark text-white text-center p-3 mt-5">
-  &copy; 2026 Skye Jimenez Photography
-</footer>
+const services = [
+  { name: "Portrait Session", available: true },
+  { name: "Wedding Package", available: true },
+  { name: "Mini Session", available: false },
+  { name: "Event Coverage", available: true }
+];
 
-  
-</main>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+let output = "";
+let i = 0;
 
-<!-- Link to your external JavaScript file -->
-<script src="js/script.js"></script>
+// decision loop
+while (i < services.length) {
+  if (services[i].available) {
+    output += "📸 " + services[i].name + " - Available Now<br>";
+  } else {
+    output += "⛔ " + services[i].name + " - Currently Unavailable<br>";
+  }
+  i++;
+}
+
+document.getElementById("serviceList").innerHTML = output;
 
 </body>
 </html>
