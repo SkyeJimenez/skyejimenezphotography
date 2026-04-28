@@ -1,5 +1,3 @@
-https://skyejimenez.github.io/skyejimenezphotography/services.html
-HELP ME CORRECT
 function getGreeting() {
     const hour = new Date().getHours();
     let greeting;
@@ -48,29 +46,38 @@ for (var i = 0; i < services.length; i++) {
 
 document.getElementById('services').innerHTML = serviceList;
 
-function loadServices() {
+<script>
+document.addEventListener("DOMContentLoaded", function () {
 
-    const services = [
-        { name: "Family Photography", available: true },
-        { name: "Sports Media", available: true },
-        { name: "Portrait Sessions", available: false },
-        { name: "Event Coverage", available: true }
-    ];
+  const services = [
+    { name: "Portrait Session", available: true },
+    { name: "Wedding Package", available: true },
+    { name: "Mini Session", available: false },
+    { name: "Event Coverage", available: true }
+  ];
 
-    let output = "";
-    let i = 0;
+  let output = "";
+  let i = 0;
 
-    // CHAPTER 4 DECISION LOOP (REQUIRED)
-    while (i < services.length) {
+  // Chapter 4 decision loop
+  while (i < services.length) {
 
-        if (services[i].available) {
-            output += "📸 " + services[i].name + " — Available Now<br>";
-        } else {
-            output += "⛔ " + services[i].name + " — Currently Unavailable<br>";
-        }
-
-        i++;
+    if (services[i].available === true) {
+      output += "📸 " + services[i].name + " — Available Now<br>";
+    } else {
+      output += "⛔ " + services[i].name + " — Currently Unavailable<br>";
     }
 
-    document.getElementById("services").innerHTML = output;
-}
+    i++;
+  }
+
+  const el = document.getElementById("serviceList");
+
+  if (el) {
+    el.innerHTML = output;
+  } else {
+    console.log("ERROR: serviceList element not found");
+  }
+
+});
+</script>
