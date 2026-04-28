@@ -96,6 +96,27 @@
   &copy; 2026 Skye Jimenez Photography
 </footer>
 
+  <!-- JAVASCRIPT GREETING -->
+<script>
+function getGreeting() {
+    const hour = new Date().getHours();
+    let greeting;
+
+    if (hour < 12) {
+        greeting = "Good Morning! Welcome to my website 🌅";
+    } else if (hour < 18) {
+        greeting = "Good Afternoon! Thanks for stopping by ☀️";
+    } else {
+        greeting = "Good Evening! Hope you enjoy your visit 🌙";
+    }
+
+    document.getElementById("greeting").textContent = greeting;
+}
+
+getGreeting();
+</script>
+
+
 <!-- JS -->
 <script src="./script.js"></script>
 
