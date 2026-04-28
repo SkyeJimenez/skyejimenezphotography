@@ -37,42 +37,38 @@ function showOfferExpiry() {
 }
 
 
-// ======================
-// CHAPTER 4 DECISION LOOP (ONLY ONE)
-// ======================
-function loadServices() {
+<script>
+document.addEventListener("DOMContentLoaded", function () {
 
-    const services = [
-        { name: "Portrait Session", available: true },
-        { name: "Wedding Package", available: true },
-        { name: "Mini Session", available: false },
-        { name: "Event Coverage", available: true }
-    ];
+  const services = [
+    { name: "Portrait Session", available: true },
+    { name: "Wedding Package", available: true },
+    { name: "Mini Session", available: false },
+    { name: "Event Coverage", available: true }
+  ];
 
-    let output = "";
-    let i = 0;
+  let output = "";
+  let i = 0;
 
-    while (i < services.length) {
+  // Chapter 4 decision loop
+  while (i < services.length) {
 
-        if (services[i].available) {
-            output += "📸 " + services[i].name + " — Available Now<br>";
-        } else {
-            output += "⛔ " + services[i].name + " — Currently Unavailable<br>";
-        }
-
-        i++;
+    if (services[i].available === true) {
+      output += "📸 " + services[i].name + " — Available Now<br>";
+    } else {
+      output += "⛔ " + services[i].name + " — Currently Unavailable<br>";
     }
 
-    const el = document.getElementById("serviceList");
-    if (el) el.innerHTML = output;
-}
+    i++;
+  }
 
+  const box = document.getElementById("serviceList");
 
-// ======================
-// RUN EVERYTHING (IMPORTANT)
-// ======================
-document.addEventListener("DOMContentLoaded", function () {
-    getGreeting();
-    showOfferExpiry();
-    loadServices();
+  if (box) {
+    box.innerHTML = output;
+  } else {
+    console.log("ERROR: serviceList not found");
+  }
+
 });
+</script>
