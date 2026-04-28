@@ -36,7 +36,9 @@ function showOfferExpiry() {
 }
 
 
-<script>
+// ======================
+// CHAPTER 4 DECISION LOOP
+// ======================
 document.addEventListener("DOMContentLoaded", function () {
 
   const services = [
@@ -48,7 +50,6 @@ document.addEventListener("DOMContentLoaded", function () {
   let output = "";
   let i = 0;
 
-  // Chapter 4 decision loop
   while (i < services.length) {
 
     if (services[i].available === true) {
@@ -61,10 +62,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   const box = document.getElementById("serviceList");
-
-  if (box) {
-    box.innerHTML = output;
-  }
+  if (box) box.innerHTML = output;
 
 });
-</script>
