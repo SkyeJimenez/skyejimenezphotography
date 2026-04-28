@@ -4,7 +4,7 @@ function getGreeting() {
     let greeting;
 
     if (hour < 12) {
-        greeting = "Good Morning! Welcome to my website 🌅";
+        greeting = "Good Morning! Welcome to my Pitch 🌅";
     } else if (hour < 18) {
         greeting = "Good Afternoon! Thanks for stopping by ☀️";
     } else {
@@ -41,10 +41,9 @@ function showOfferExpiry() {
 document.addEventListener("DOMContentLoaded", function () {
 
   const services = [
-    { name: "Full Game Session", available: true },
+    { name: "Full Game Package", available: true },
     { name: "Team Full Game Package", available: true },
-    { name: "Tournament Package", available: false },
-   
+    { name: "Tournament Package", available: false }
   ];
 
   let output = "";
@@ -66,8 +65,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (box) {
     box.innerHTML = output;
-  } else {
-    console.log("ERROR: serviceList not found");
   }
 
 });
