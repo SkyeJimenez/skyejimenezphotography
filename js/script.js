@@ -1,20 +1,20 @@
-document.addEventListener("DOMContentLoaded", function () {
+function getGreeting() {
+    const hour = new Date().getHours();
+    let greeting = "";
 
-  const hour = new Date().getHours();
-  let greeting = "";
+    if (hour < 12) {
+        greeting = "Good Morning! Welcome to my website 🌅";
+    } else if (hour < 18) {
+        greeting = "Good Afternoon! Thanks for stopping by ☀️";
+    } else {
+        greeting = "Good Evening! Hope you enjoy your visit 🌙";
+    }
 
-  if (hour < 12) {
-    greeting = "Good Morning! Welcome to my website 🌅";
-  } else if (hour < 18) {
-    greeting = "Good Afternoon! Thanks for stopping by ☀️";
-  } else {
-    greeting = "Good Evening! Hope you enjoy your visit 🌙";
-  }
-
-  const greetingEl = document.getElementById("greeting");
-  if (greetingEl) {
-    greetingEl.textContent = greeting;
-  }
+    const greetingEl = document.getElementById("greeting");
+    if (greetingEl) {
+        greetingEl.textContent = greeting;
+    }
+}
 
   const price = 240;
   const discount = 15;
