@@ -1,47 +1,54 @@
 
-function getGreeting() {
-    const hour = new Date().getHours();
-    let greeting;
-
-    if (hour < 12) {
-        greeting = "Good Morning! Welcome to my Pitch 🌅";
-    } else if (hour < 18) {
-        greeting = "Good Afternoon! Thanks for stopping by ☀️";
-    } else {
-        greeting = "Good Evening! Hope you enjoy your visit 🌙";
-    }
-
-    const g = document.getElementById("greeting");
-    if (g) g.textContent = greeting;
-}
-
-
-function showOfferExpiry() {
-    let today = new Date();
-    let expireDate = new Date();
-
-    expireDate.setDate(today.getDate() + 7);
-
-    let formattedDate = expireDate.toLocaleDateString('en-US', {
-        weekday: 'long',
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-    });
-
-    const o = document.getElementById("offer");
-    if (o) {
-        o.textContent =
-            "⚡ Limited Time Offer! 20% off bookings — offer expires " + formattedDate;
-    }
-}
-
-
 document.addEventListener("DOMContentLoaded", function () {
 
-    // 🔥 REQUIRED FUNCTION CALLS
-    getGreeting();
-    showOfferExpiry();
+  // GREETING
+  const hour = new Date().getHours();
+  let greeting;
+
+  if (hour < 12) {
+    greeting = "Good Morning! Welcome to my website 🌅";
+  } else if (hour < 18) {
+    greeting = "Good Afternoon! Thanks for stopping by ☀️";
+  } else {
+    greeting = "Good Evening! Hope you enjoy your visit 🌙";
+  }
+
+  const greetingEl = document.getElementById("greeting");
+  if (greetingEl) {
+    greetingEl.textContent = greeting;
+  }
+
+  // OFFER
+  const hotel = {
+    name: "Skye Jimenez Photography",
+    roomRate: 240,
+    discount: 15,
+    offerPrice: function () {
+      return this.roomRate * (1 - this.discount / 100);
+    }
+  };
+
+  const roomRateEl = document.getElementById("roomRate");
+  const specialRateEl = document.getElementById("specialRate");
+  const offerEndsEl = document.getElementById("offerEnds");
+
+  if (roomRateEl) roomRateEl.textContent = "$" + hotel.roomRate.toFixed(2);
+  if (specialRateEl) specialRateEl.textContent = "$" + hotel.offerPrice().toFixed(2);
+
+  function offerExpires() {
+    const today = new Date();
+    const weekFromToday = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
+
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+
+    return "Offer expires on " + weekFromToday.toLocaleDateString("en-US", options);
+  }
+
+  if (offerEndsEl) {
+    offerEndsEl.innerHTML = offerExpires();
+  }
+
+});
 
     const services = [
         { name: "Full Game Package", available: true },
