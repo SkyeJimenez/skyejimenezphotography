@@ -39,5 +39,12 @@ function getGreeting() {
     if (offerEndsEl) {
         offerEndsEl.textContent = offerExpires();
     }
+document.addEventListener("DOMContentLoaded", function () {
+  const button = document.getElementById("myButton");
+
+  button.addEventListener("click", function () {
+    alert("Event triggered! You clicked the button.");
+  });
+});
 }
 });
