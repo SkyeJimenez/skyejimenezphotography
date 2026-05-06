@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
         greetingEl.textContent = greeting;
     }
 
-    // CHAPTER 5–6 EVENT (CLICK EVENT)
+    //EVENT (CLICK EVENT)
     const button = document.getElementById("myButton");
 
     if (button) {
