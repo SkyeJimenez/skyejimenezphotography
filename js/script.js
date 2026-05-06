@@ -1,3 +1,4 @@
+// GREETING MESSAGE
 function getGreeting() {
     const hour = new Date().getHours();
     let greeting = "";
@@ -16,35 +17,31 @@ function getGreeting() {
     }
 }
 
- function offerExpires() {
+
+// OFFER EXPIRATION MESSAGE
+function offerExpires() {
     const today = new Date();
-    const future = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
+    const year = today.getFullYear();
 
-    return "Offer expires on " + future.toDateString();
-  }
+    // End of April
+    const endOfApril = new Date(year, 3, 30);
 
-  if (offerEndsEl) {
-    offerEndsEl.textContent = offerExpires();
-  }
-  function offerExpires() {
-        const today = new Date();
-        const year = today.getFullYear();
-
-        // Set end of April
-        const endOfApril = new Date(year, 3, 30); // Month is 0-based (3 = April)
-
-        return "🔥 20% OFF — Valid until " + endOfApril.toDateString();
-    }
-
-    if (offerEndsEl) {
-        offerEndsEl.textContent = offerExpires();
-    }
-document.addEventListener("DOMContentLoaded", function () {
-  const button = document.getElementById("myButton");
-
-  button.addEventListener("click", function () {
-    alert("Event triggered! You clicked the button.");
-  });
-});
+    return "🔥 20% OFF — Valid until " + endOfApril.toDateString();
 }
+
+const offerEndsEl = document.getElementById("offerEnds");
+if (offerEndsEl) {
+    offerEndsEl.textContent = offerExpires();
+}
+
+
+// BUTTON CLICK EVENT (CHAPTER 5–6 REQUIREMENT)
+document.addEventListener("DOMContentLoaded", function () {
+    const button = document.getElementById("myButton");
+
+    if (button) {
+        button.addEventListener("click", function () {
+            alert("Event triggered! You clicked the button.");
+        });
+    }
 });
