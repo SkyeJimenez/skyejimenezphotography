@@ -1,5 +1,6 @@
-// GREETING MESSAGE
-function getGreeting() {
+document.addEventListener("DOMContentLoaded", function () {
+
+    // GREETING (time-based)
     const hour = new Date().getHours();
     let greeting = "";
 
@@ -15,33 +16,14 @@ function getGreeting() {
     if (greetingEl) {
         greetingEl.textContent = greeting;
     }
-}
 
-
-// OFFER EXPIRATION MESSAGE
-function offerExpires() {
-    const today = new Date();
-    const year = today.getFullYear();
-
-    // End of April
-    const endOfApril = new Date(year, 3, 30);
-
-    return "🔥 20% OFF — Valid until " + endOfApril.toDateString();
-}
-
-const offerEndsEl = document.getElementById("offerEnds");
-if (offerEndsEl) {
-    offerEndsEl.textContent = offerExpires();
-}
-
-
-// BUTTON CLICK EVENT (CHAPTER 5–6 REQUIREMENT)
-document.addEventListener("DOMContentLoaded", function () {
+    // CHAPTER 5–6 EVENT (CLICK EVENT)
     const button = document.getElementById("myButton");
 
     if (button) {
         button.addEventListener("click", function () {
-            alert("Event triggered! You clicked the button.");
+            alert("Thanks for visiting Skye Jimenez Photography!");
         });
     }
+
 });
