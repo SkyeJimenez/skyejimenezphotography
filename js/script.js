@@ -1,8 +1,7 @@
 $(function() {
-    // This function runs as soon as the DOM is ready (jQuery version of DOMContentLoaded)
     console.log("jQuery is active and the DOM is ready!");
 
-    // --- CHAPTER 7: jQuery DOM (Time-based Greeting) ---
+    // --- CHAPTER 7: Time-based Greeting ---
     const hour = new Date().getHours();
     let greeting = "";
 
@@ -14,29 +13,31 @@ $(function() {
         greeting = "Good Evening! Hope you enjoy your visit 🌙";
     }
 
-    // In jQuery, we use .text() to change content
-    $('#greeting').text(greeting);
+    $('#greeting').text(greeting).hide().fadeIn(1200);
 
 
-    // --- CHAPTER 8: jQuery Events (Click Event) ---
-    // We target the button and use .on() to listen for the click
+    // --- CHAPTER 8: Click Event (Contact to Book Now) ---
     $('#event-btn').on('click', function() {
-        
-        // We target the feedback div
+
         $('#feedback')
-            .text('jQuery Event Triggered! Thank you for visiting my portfolio.')
+            .text('Thanks for contacting me to book now! I will reach out to you shortly.')
             .css({
                 'color': '#0d6efd',
                 'font-weight': 'bold'
             })
-            .hide()      // Hide it first...
-            .fadeIn(800); // ...then fade it in beautifully (Chapter 7 Effect)
-            
-        console.log("The jQuery click event was successful!");
+            .hide()
+            .fadeIn(800);
+
+        $(this)
+            .text('Request Sent ✔')
+            .prop('disabled', true);
+
+        console.log("Booking request sent successfully!");
     });
 
-    // BONUS: Subtle Gallery Effect
-    // This makes your images slightly transparent and fade in fully on load
-    $('.row img').css('opacity', '0.8').fadeTo(1000, 1.0);
 
+    // --- BONUS: Gallery Fade Effect ---
+    $('.row img')
+        .css('opacity', '0.85')
+        .fadeTo(900, 1.0);
 });
