@@ -1,6 +1,8 @@
-document.addEventListener("DOMContentLoaded", function () {
+$(function() {
+    // This function runs as soon as the DOM is ready (jQuery version of DOMContentLoaded)
+    console.log("jQuery is active and the DOM is ready!");
 
-    // --- CHAPTER 5: DOM MANIPULATION (Time-based Greeting) ---
+    // --- CHAPTER 7: jQuery DOM (Time-based Greeting) ---
     const hour = new Date().getHours();
     let greeting = "";
 
@@ -12,22 +14,29 @@ document.addEventListener("DOMContentLoaded", function () {
         greeting = "Good Evening! Hope you enjoy your visit 🌙";
     }
 
-    const greetingEl = document.getElementById("greeting");
-    if (greetingEl) {
-        greetingEl.textContent = greeting;
-    }
+    // In jQuery, we use .text() to change content
+    $('#greeting').text(greeting);
 
-    // --- CHAPTER 6: EVENTS (Click Event) ---
-    var elBtn = document.getElementById('event-btn');
-    var elNote = document.getElementById('feedback');
 
-    if (elBtn && elNote) {
-        function showMessage() {
-            elNote.textContent = 'Event Triggered: Thank you for exploring my soccer photography!';
-            elNote.className = "mt-3 fs-5 text-success animate-fade-in"; 
-        }
+    // --- CHAPTER 8: jQuery Events (Click Event) ---
+    // We target the button and use .on() to listen for the click
+    $('#event-btn').on('click', function() {
+        
+        // We target the feedback div
+        $('#feedback')
+            .text('jQuery Event Triggered! Thank you for visiting my portfolio.')
+            .css({
+                'color': '#0d6efd',
+                'font-weight': 'bold'
+            })
+            .hide()      // Hide it first...
+            .fadeIn(800); // ...then fade it in beautifully (Chapter 7 Effect)
+            
+        console.log("The jQuery click event was successful!");
+    });
 
-        // Standard event listener (Duckett Chapter 6)
-        elBtn.addEventListener('click', showMessage, false);
-    }
+    // BONUS: Subtle Gallery Effect
+    // This makes your images slightly transparent and fade in fully on load
+    $('.row img').css('opacity', '0.8').fadeTo(1000, 1.0);
+
 });
