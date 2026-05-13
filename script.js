@@ -36,6 +36,31 @@ $(function() {
     });
 
 
+    // --- AJAX FEATURE: Soccer Quote Loader ---
+    function loadQuote() {
+
+        $.ajax({
+            url: "https://api.quotable.io/random",
+            method: "GET",
+            success: function(data) {
+                $("#quote").text('"' + data.content + '" — ' + data.author);
+            },
+            error: function() {
+                $("#quote").text("Could not load quote. Try again.");
+            }
+        });
+
+    }
+
+    // Load quote on page load
+    loadQuote();
+
+    // Load new quote on button click
+    $("#quote-btn").on("click", function() {
+        loadQuote();
+    });
+
+
     // --- BONUS: Gallery Fade Effect ---
     $('.row img')
         .css('opacity', '0.85')
