@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Skye Jimenez Photography</title>
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -14,67 +17,146 @@
 <!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
+
+        <!-- LOGO -->
         <a class="navbar-brand" href="index.html">
             <img src="20.png" alt="Skye Jimenez Photography" style="height: 50px;">
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+
+        <!-- MOBILE MENU BUTTON -->
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
+
+        <!-- NAVIGATION LINKS -->
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-                <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
-                <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
-                <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="index.html">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html">About</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="gallery.html">Gallery</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="services.html">Services</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contact</a>
+                </li>
             </ul>
         </div>
     </div>
 </nav>
 
-<!-- HERO -->
-<header class="position-relative text-center text-white" style="height: 60vh; overflow: hidden;">
-    <img src="aerialsoccer.jpg" class="w-100 h-100" style="object-fit: cover;" alt="Aerial soccer photo">
+<!-- HERO SECTION -->
+<header class="position-relative text-center text-white"
+        style="height: 60vh; overflow: hidden;">
+
+    <img src="aerialsoccer.jpg"
+         class="w-100 h-100"
+         style="object-fit: cover;"
+         alt="Aerial soccer photo">
+
     <div class="position-absolute top-50 start-50 translate-middle px-3 w-100">
-        <h1>Capturing the Heart of Soccer</h1>
-        <!-- jQuery will target this ID -->
-        <h2 id="greeting" class="mt-2 fw-bold"></h2>
-        <p>Dynamic sports photography by Skye Jimenez</p>
-        <a href="gallery.html" class="btn btn-primary mt-3">View Portfolio</a>
+
+        <h1 class="display-4 fw-bold">
+            Capturing the Heart of Soccer
+        </h1>
+
+        <!-- jQuery Greeting -->
+        <h2 id="greeting" class="mt-3 fw-bold"></h2>
+
+        <p class="lead">
+            Dynamic sports photography by Skye Jimenez
+        </p>
+
+        <a href="gallery.html" class="btn btn-primary btn-lg mt-3">
+            View Portfolio
+        </a>
     </div>
 </header>
 
-<!-- JQUERY FEATURE SECTION -->
+<!-- BOOKING SECTION -->
 <section class="container my-5 text-center">
     <div class="p-5 border rounded shadow-sm bg-light">
-        <h3>Book Now! </h3>
-        <button id="event-btn" class="btn btn-dark btn-lg">Click Me</button>
-        <!-- jQuery will update this ID -->
-        <div id="feedback" class="mt-3 fw-bold" style="display:none;"></div>
-    </div>
-</section>
-    
-    <section class="container my-5 text-center">
-    <div class="p-4 border rounded shadow-sm bg-light">
-        <h3>Soccer Inspiration</h3>
-        <p id="quote">Loading quote...</p>
-        <button id="quote-btn" class="btn btn-primary mt-2">New Quote</button>
+
+        <h3 class="mb-3">Book Your Soccer Session</h3>
+
+        <p>
+            Action shots, team coverage, and unforgettable soccer moments.
+        </p>
+
+        <button id="event-btn" class="btn btn-dark btn-lg">
+            Click Me
+        </button>
+
+        <!-- jQuery Feedback -->
+        <div id="feedback"
+             class="mt-3 fw-bold"
+             style="display:none;">
+        </div>
+
     </div>
 </section>
 
-<!-- CONTENT -->
+<!-- API FEATURE SECTION -->
+<section class="container my-5 text-center">
+    <div class="p-4 border rounded shadow-sm bg-light">
+
+        <h3 class="mb-3">Soccer Inspiration</h3>
+
+        <p class="mb-3">
+            Daily motivational quotes powered by an API.
+        </p>
+
+        <!-- API CONTENT -->
+        <p id="quote" class="fs-5 fw-semibold">
+            Loading quote...
+        </p>
+
+        <button id="quote-btn" class="btn btn-primary mt-2">
+            New Quote
+        </button>
+
+    </div>
+</section>
+
+<!-- GALLERY PREVIEW -->
 <main class="container my-5">
-    <h2 class="text-center mb-4">Soccer Photography Highlights</h2>
+
+    <h2 class="text-center mb-4">
+        Soccer Photography Highlights
+    </h2>
+
     <div class="row g-4">
+
         <div class="col-md-4">
-            <img src="soccer1.jpg" class="img-fluid rounded shadow" alt="soccer match">
+            <img src="soccer1.jpg"
+                 class="img-fluid rounded shadow"
+                 alt="Soccer match">
         </div>
+
         <div class="col-md-4">
-            <img src="soccer10.jpg" class="img-fluid rounded shadow" alt="soccer player">
+            <img src="soccer10.jpg"
+                 class="img-fluid rounded shadow"
+                 alt="Soccer player">
         </div>
+
         <div class="col-md-4">
-            <img src="soccer11.jpg" class="img-fluid rounded shadow" alt="soccer celebration">
+            <img src="soccer11.jpg"
+                 class="img-fluid rounded shadow"
+                 alt="Soccer celebration">
         </div>
+
     </div>
 </main>
 
@@ -83,16 +165,57 @@
     &copy; 2026 Skye Jimenez Photography
 </footer>
 
-<!-- IMPORTANT: SCRIPT LOADING ORDER -->
+<!-- SCRIPTS -->
 
-<!-- 1. Load jQuery first (required for your script to work) -->
+<!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
-<!-- 2. Load your custom script second -->
-<script src="script.js"></script>
-
-<!-- 3. Load Bootstrap last -->
+<!-- Bootstrap -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- CUSTOM JAVASCRIPT -->
+<script>
+
+    // GREETING MESSAGE
+    $("#greeting").text("Professional Soccer Photography");
+
+    // BUTTON INTERACTION
+    $("#event-btn").click(function () {
+
+        $("#feedback")
+            .hide()
+            .html("Thank you for your interest! Contact Skye Jimenez Photography to book your next session.")
+            .fadeIn(800);
+
+    });
+
+    // QUOTE API FEATURE
+    async function getQuote() {
+
+        try {
+
+            const response = await fetch("https://api.quotable.io/random");
+
+            const data = await response.json();
+
+            $("#quote").text(`"${data.content}" — ${data.author}`);
+
+        } catch (error) {
+
+            $("#quote").text("Could not load quote.");
+
+        }
+    }
+
+    // LOAD QUOTE WHEN PAGE LOADS
+    getQuote();
+
+    // NEW QUOTE BUTTON
+    $("#quote-btn").click(function () {
+        getQuote();
+    });
+
+</script>
 
 </body>
 </html>
