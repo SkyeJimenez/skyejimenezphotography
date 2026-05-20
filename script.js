@@ -1,10 +1,10 @@
 $(function () {
 
-    console.log("Website loaded successfully");
+    console.log("Skye Jimenez Photography site loaded");
 
-    // ----------------------
-    // CHAPTER 7: GREETING
-    // ----------------------
+    // -------------------------
+    // CHAPTER 7: TIME GREETING
+    // -------------------------
     const hour = new Date().getHours();
     let greeting = "";
 
@@ -21,14 +21,15 @@ $(function () {
         .hide()
         .fadeIn(1000);
 
-    // ----------------------
-    // CHAPTER 8: BUTTON
-    // ----------------------
+
+    // -------------------------
+    // CHAPTER 8: BUTTON INTERACTION
+    // -------------------------
     $("#event-btn").on("click", function () {
 
         $("#feedback")
             .stop(true, true)
-            .text("Thanks! I’ll reach out soon to book your session.")
+            .text("Thanks! Your booking request has been received. I will contact you soon.")
             .css({
                 color: "#0d6efd",
                 fontWeight: "bold"
@@ -42,39 +43,58 @@ $(function () {
 
     });
 
-    // ----------------------
-    // CHAPTER 9/10: API
-    // ----------------------
+
+    // -------------------------
+    // CHAPTER 9/10: API (FIXED + RELIABLE)
+    // -------------------------
     function loadQuote() {
 
-        $("#quote").fadeOut(150, function () {
+        const primaryAPI = "https://dummyjson.com/quotes/random";
+        const backupAPI = "https://api.quotable.io/random";
 
-            $.ajax({
-                url: "https://api.quotable.io/random",
-                method: "GET",
+        $.getJSON(primaryAPI)
+            .done(function (data) {
 
-                success: function (data) {
-                    $("#quote")
-                        .text(`"${data.content}" — ${data.author}`)
-                        .fadeIn(300);
-                },
+                $("#quote").text(`"${data.quote}" — ${data.author}`);
 
-                error: function () {
-                    $("#quote")
-                        .text("Could not load quote. Try again.")
-                        .fadeIn(300);
-                }
+            })
+            .fail(function () {
+
+                // backup API if first fails
+                $.getJSON(backupAPI)
+                    .done(function (data) {
+                        $("#quote").text(`"${data.content}" — ${data.author}`);
+                    })
+                    .fail(function () {
+                        $("#quote").text("Could not load quote. Try again.");
+                    });
+
             });
-
-        });
     }
 
-    // Load on page start
+
+    // Load quote on page load
     loadQuote();
+
 
     // New quote button
     $("#quote-btn").on("click", function () {
         loadQuote();
     });
+
+
+    // -------------------------
+    // BONUS: GALLERY EFFECT
+    // -------------------------
+    $(".row img")
+        .css("opacity", "0.85")
+        .hover(
+            function () {
+                $(this).fadeTo(200, 1);
+            },
+            function () {
+                $(this).fadeTo(200, 0.85);
+            }
+        );
 
 });
