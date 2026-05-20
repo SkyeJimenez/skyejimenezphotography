@@ -40,39 +40,36 @@ $(function () {
         $(this)
             .text("Request Sent ✔")
             .prop("disabled", true);
-
     });
 
 
     // -------------------------
-    // CHAPTER 9/10: API (FIXED + RELIABLE)
+    // CHAPTER 9/10: API QUOTES
     // -------------------------
     function loadQuote() {
 
-    const api1 = "https://dummyjson.com/quotes/random";
-    const api2 = "https://api.quotable.io/random";
+        const api1 = "https://dummyjson.com/quotes/random";
+        const api2 = "https://api.quotable.io/random";
 
-    $.getJSON(api1)
-        .done(function (data) {
-            $("#quote").text(`"${data.quote}" — ${data.author}`);
-        })
-        .fail(function () {
+        $.getJSON(api1)
+            .done(function (data) {
+                $("#quote").text(`"${data.quote}" — ${data.author}`);
+            })
+            .fail(function () {
 
-            $.getJSON(api2)
-                .done(function (data) {
-                    $("#quote").text(`"${data.content}" — ${data.author}`);
-                })
-                .fail(function () {
-                    $("#quote").text("Quote unavailable right now. Try again later.");
-                });
+                $.getJSON(api2)
+                    .done(function (data) {
+                        $("#quote").text(`"${data.content}" — ${data.author}`);
+                    })
+                    .fail(function () {
+                        $("#quote").text("Quote unavailable right now. Try again later.");
+                    });
 
-        });
-}
-
+            });
+    }
 
     // Load quote on page load
     loadQuote();
-
 
     // New quote button
     $("#quote-btn").on("click", function () {
@@ -81,7 +78,22 @@ $(function () {
 
 
     // -------------------------
-    // BONUS: GALLERY EFFECT
+    // CHAPTER 11: CONTENT PANELS
+    // -------------------------
+    $(".panel-btn").on("click", function () {
+
+        const content = $(this).next(".panel-content");
+
+        // close other panels (accordion style)
+        $(".panel-content").not(content).slideUp(200);
+
+        // toggle selected panel
+        content.stop(true, true).slideToggle(250);
+    });
+
+
+    // -------------------------
+    // BONUS: GALLERY HOVER EFFECT
     // -------------------------
     $(".row img")
         .css("opacity", "0.85")
