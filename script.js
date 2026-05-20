@@ -49,28 +49,25 @@ $(function () {
     // -------------------------
     function loadQuote() {
 
-        const primaryAPI = "https://dummyjson.com/quotes/random";
-        const backupAPI = "https://api.quotable.io/random";
+    const api1 = "https://dummyjson.com/quotes/random";
+    const api2 = "https://api.quotable.io/random";
 
-        $.getJSON(primaryAPI)
-            .done(function (data) {
+    $.getJSON(api1)
+        .done(function (data) {
+            $("#quote").text(`"${data.quote}" — ${data.author}`);
+        })
+        .fail(function () {
 
-                $("#quote").text(`"${data.quote}" — ${data.author}`);
+            $.getJSON(api2)
+                .done(function (data) {
+                    $("#quote").text(`"${data.content}" — ${data.author}`);
+                })
+                .fail(function () {
+                    $("#quote").text("Quote unavailable right now. Try again later.");
+                });
 
-            })
-            .fail(function () {
-
-                // backup API if first fails
-                $.getJSON(backupAPI)
-                    .done(function (data) {
-                        $("#quote").text(`"${data.content}" — ${data.author}`);
-                    })
-                    .fail(function () {
-                        $("#quote").text("Could not load quote. Try again.");
-                    });
-
-            });
-    }
+        });
+}
 
 
     // Load quote on page load
