@@ -1,10 +1,14 @@
-/* Reset some basic elements */
+/* =========================
+   RESET
+========================= */
 body, h1, h2, h3, h4, h5, h6, p, ul, li, figure, figcaption {
     margin: 0;
     padding: 0;
 }
 
-/* General */
+/* =========================
+   GENERAL
+========================= */
 body {
     font-family: 'Arial', sans-serif;
     background-color: #f8f9fa;
@@ -19,13 +23,17 @@ a {
     text-decoration: none;
 }
 
-/* Navbar */
+/* =========================
+   NAVBAR
+========================= */
 .navbar-nav .nav-link.active {
     font-weight: bold;
     color: #ffc107 !important;
 }
 
-/* Header Video */
+/* =========================
+   HEADER / HERO
+========================= */
 header h1 {
     font-size: 2.5rem;
     font-weight: 700;
@@ -41,7 +49,9 @@ header .btn {
     font-weight: 600;
 }
 
-/* Overlay container for homepage highlights */
+/* =========================
+   OVERLAY EFFECTS
+========================= */
 .overlay-container {
     position: relative;
     overflow: hidden;
@@ -73,20 +83,26 @@ header .btn {
     font-size: 0.95rem;
 }
 
-/* Gallery Images */
+/* =========================
+   GALLERY
+========================= */
 .gallery-img {
     margin-bottom: 1rem;
     border-radius: 0.25rem;
 }
 
-/* Services Packages */
+/* =========================
+   SERVICES / IMAGES
+========================= */
 .service-img {
     width: 100%;
     border-radius: 0.25rem;
     margin-bottom: 0.5rem;
 }
 
-/* About Page Image Alignment */
+/* =========================
+   ABOUT PAGE IMAGE
+========================= */
 .about-img {
     max-width: 300px;
     float: right;
@@ -95,43 +111,94 @@ header .btn {
     border-radius: 0.25rem;
 }
 
-/* Footer */
+/* =========================
+   FOOTER
+========================= */
 footer {
     font-size: 0.9rem;
     background-color: #343a40;
+    color: white;
 }
 
-/* Responsive */
+/* =========================
+   GREETING (ANIMATION)
+========================= */
+#greeting {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: #f5e6c8;
+    margin: 10px 0;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeSlideIn 1.2s ease forwards;
+}
+
+@keyframes fadeSlideIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================
+   CHAPTER 11: CONTENT PANELS
+========================= */
+.panel {
+    margin-bottom: 10px;
+}
+
+.panel-btn {
+    width: 100%;
+    padding: 14px 16px;
+    text-align: left;
+    border: none;
+    background: #111;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.panel-btn:hover {
+    background: #222;
+    transform: scale(1.01);
+}
+
+.panel-content {
+    display: none;
+    padding: 15px;
+    background: #ffffff;
+    border-left: 4px solid #0d6efd;
+    border-radius: 0 0 6px 6px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #333;
+}
+
+.panel-content p {
+    margin: 0;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
 @media (max-width: 768px) {
+
     header h1 {
         font-size: 1.8rem;
     }
+
     header p {
         font-size: 1rem;
     }
+
     .about-img {
         float: none;
         display: block;
         margin: 0 auto 20px;
     }
-    
- /* Greeting styling */
-#greeting {
-  font-family: 'Playfair Display', serif;
-  font-size: 2rem;
-  font-weight: 500;
-  letter-spacing: 1px;
-  color: #f5e6c8; /* soft gold tone */
-  margin: 10px 0;
-  opacity: 0;
-  transform: translateY(10px);
-  animation: fadeSlideIn 1.2s ease forwards;
-}
-
-/* Smooth fade + slide animation */
-@keyframes fadeSlideIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
