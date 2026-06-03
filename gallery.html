@@ -70,7 +70,6 @@
   cursor: pointer;
 }
 
-/* ===== SEARCH BAR ===== */
 .search-box {
   margin-bottom: 20px;
 }
@@ -111,7 +110,7 @@
     type="text" 
     id="searchInput" 
     class="form-control search-box"
-    placeholder="Search photos (soccer, action, team, portrait...)"
+    placeholder="Search photos..."
   >
 
   <!-- FILTER BUTTONS -->
@@ -162,8 +161,6 @@
       <p class="text-center">Athlete Portrait</p>
     </div>
 
-    <!-- continue same pattern for remaining images -->
-
   </div>
 </main>
 
@@ -187,7 +184,6 @@ const lightbox = document.getElementById("lightbox");
 const lightboxImg = document.getElementById("lightbox-img");
 const closeBtn = document.querySelector(".close");
 
-// open image
 document.querySelectorAll(".gallery-img").forEach(img => {
   img.addEventListener("click", function () {
     lightbox.style.display = "flex";
@@ -195,12 +191,10 @@ document.querySelectorAll(".gallery-img").forEach(img => {
   });
 });
 
-// close button
 closeBtn.onclick = function () {
   lightbox.style.display = "none";
 };
 
-// click outside closes
 lightbox.onclick = function (e) {
   if (e.target === lightbox) {
     lightbox.style.display = "none";
@@ -208,7 +202,7 @@ lightbox.onclick = function (e) {
 };
 </script>
 
-<!-- YOUR CHAPTER 12 SCRIPT (IMPORTANT) -->
+<!-- YOUR MAIN SCRIPT (FIXED PATH) -->
 <script src="script.js"></script>
 
 </body>
