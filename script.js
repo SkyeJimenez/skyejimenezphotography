@@ -60,42 +60,34 @@ document.addEventListener("DOMContentLoaded", function () {
     // =========================
     // FORM VALIDATION (CHAPTER 13 FIXED)
     // =========================
-    const form = document.getElementById("contactForm");
+   const form = document.getElementById("contactForm");
 
-    if (form) {
+if (form) {
+    form.addEventListener("submit", function (event) {
 
-        form.addEventListener("submit", function (event) {
+        let errorMsg = "";
 
-            let errorMsg = "";
+        const nameEl = document.getElementById("name");
+        const emailEl = document.getElementById("email");
+        const messageEl = document.getElementById("message");
+        const errorDisplay = document.getElementById("errorMsg");
 
-            const name = document.getElementById("name").value.trim();
-            const email = document.getElementById("email").value.trim();
-            const message = document.getElementById("message").value.trim();
+        const name = nameEl ? nameEl.value.trim() : "";
+        const email = emailEl ? emailEl.value.trim() : "";
+        const message = messageEl ? messageEl.value.trim() : "";
 
-            if (!name) {
-                errorMsg += "Name is required. ";
-            }
+        if (!name) errorMsg += "Name is required. ";
+        if (!email) errorMsg += "Email is required. ";
+        else if (!email.includes("@")) errorMsg += "Enter a valid email. ";
+        if (!message) errorMsg += "Message is required. ";
 
-            if (!email) {
-                errorMsg += "Email is required. ";
-            } else if (!email.includes("@")) {
-                errorMsg += "Enter a valid email. ";
-            }
+        if (errorMsg !== "") {
+            event.preventDefault();
+            if (errorDisplay) errorDisplay.textContent = errorMsg;
+        } else {
+            if (errorDisplay) errorDisplay.textContent = "";
+            alert("Message sent successfully!");
+        }
+    });
+}
 
-            if (!message) {
-                errorMsg += "Message is required. ";
-            }
-
-            const errorDisplay = document.getElementById("errorMsg");
-
-            if (errorMsg !== "") {
-                event.preventDefault();
-                if (errorDisplay) errorDisplay.textContent = errorMsg;
-            } else {
-                if (errorDisplay) errorDisplay.textContent = "";
-                alert("Message sent successfully!");
-            }
-        });
-    }
-
-});
