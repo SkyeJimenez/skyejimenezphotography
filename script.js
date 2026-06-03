@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    console.log("Gallery script loaded");
+    console.log("Site script loaded");
 
     // =========================
     // SEARCH FUNCTION
@@ -15,14 +15,9 @@ document.addEventListener("DOMContentLoaded", function () {
             const items = document.querySelectorAll(".item");
 
             items.forEach(item => {
-
                 const text = item.innerText.toLowerCase();
 
-                if (text.includes(value)) {
-                    item.style.display = "block";
-                } else {
-                    item.style.display = "none";
-                }
+                item.style.display = text.includes(value) ? "block" : "none";
             });
         });
     }
@@ -38,32 +33,32 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const itemCategory = item.getAttribute("data-category");
 
-            if (category === "all" || itemCategory === category) {
-                item.style.display = "block";
-            } else {
-                item.style.display = "none";
-            }
+            item.style.display =
+                (category === "all" || itemCategory === category)
+                ? "block"
+                : "none";
         });
     };
 
     // =========================
-    // SORT A-Z
+    // SORT FUNCTION
     // =========================
     window.sortItems = function () {
 
         const container = document.getElementById("itemContainer");
+        if (!container) return;
+
         const items = Array.from(document.querySelectorAll(".item"));
 
-        items.sort((a, b) => {
-            return a.innerText.toLowerCase().localeCompare(b.innerText.toLowerCase());
-        });
+        items.sort((a, b) =>
+            a.innerText.toLowerCase().localeCompare(b.innerText.toLowerCase())
+        );
 
         items.forEach(item => container.appendChild(item));
     };
 
-
     // =========================
-    // CHAPTER 13 FORM VALIDATION (ADDED)
+    // FORM VALIDATION (CHAPTER 13 FIXED)
     // =========================
     const form = document.getElementById("contactForm");
 
@@ -73,39 +68,32 @@ document.addEventListener("DOMContentLoaded", function () {
 
             let errorMsg = "";
 
-            const name = document.getElementById("name")?.value.trim();
-            const email = document.getElementById("email")?.value.trim();
-            const message = document.getElementById("message")?.value.trim();
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const message = document.getElementById("message").value.trim();
 
-            // Validate Name
             if (!name) {
                 errorMsg += "Name is required. ";
             }
 
-            // Validate Email
             if (!email) {
                 errorMsg += "Email is required. ";
             } else if (!email.includes("@")) {
-                errorMsg += "Enter a valid email address. ";
+                errorMsg += "Enter a valid email. ";
             }
 
-            // Validate Message
             if (!message) {
                 errorMsg += "Message is required. ";
             }
 
-            // Show errors or submit
             const errorDisplay = document.getElementById("errorMsg");
 
             if (errorMsg !== "") {
                 event.preventDefault();
-                if (errorDisplay) {
-                    errorDisplay.textContent = errorMsg;
-                }
+                if (errorDisplay) errorDisplay.textContent = errorMsg;
             } else {
-                if (errorDisplay) {
-                    errorDisplay.textContent = "";
-                }
+                if (errorDisplay) errorDisplay.textContent = "";
+                alert("Message sent successfully!");
             }
         });
     }
