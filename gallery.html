@@ -16,7 +16,7 @@
   gap: 15px;
 }
 
-/* ===== GALLERY IMAGES ===== */
+/* ===== IMAGE STYLE ===== */
 .gallery-img {
   width: 100%;
   height: 250px;
@@ -55,14 +55,12 @@
   justify-content: center;
 }
 
-/* LIGHTBOX IMAGE */
 .lightbox-content {
   max-width: 90%;
   max-height: 80vh;
   border-radius: 8px;
 }
 
-/* CLOSE BUTTON */
 .close {
   position: absolute;
   top: 20px;
@@ -70,6 +68,11 @@
   font-size: 40px;
   color: white;
   cursor: pointer;
+}
+
+/* ===== SEARCH BAR ===== */
+.search-box {
+  margin-bottom: 20px;
 }
 
 </style>
@@ -98,27 +101,68 @@
   </div>
 </nav>
 
+<!-- SEARCH + CONTROLS -->
+<div class="container my-4 text-center">
+
+  <h2 class="mb-3">Photo Gallery</h2>
+
+  <!-- SEARCH -->
+  <input 
+    type="text" 
+    id="searchInput" 
+    class="form-control search-box"
+    placeholder="Search photos (soccer, action, team, portrait...)"
+  >
+
+  <!-- FILTER BUTTONS -->
+  <div class="mb-3">
+    <button class="btn btn-outline-dark btn-sm" onclick="filterItems('all')">All</button>
+    <button class="btn btn-outline-dark btn-sm" onclick="filterItems('action')">Action</button>
+    <button class="btn btn-outline-dark btn-sm" onclick="filterItems('team')">Team</button>
+    <button class="btn btn-outline-dark btn-sm" onclick="filterItems('portrait')">Portrait</button>
+  </div>
+
+  <!-- SORT -->
+  <button class="btn btn-primary btn-sm" onclick="sortItems()">Sort A-Z</button>
+
+</div>
+
 <!-- GALLERY -->
-<main class="container my-5">
-  <h2 class="text-center mb-4">Photo Gallery</h2>
+<main class="container my-4">
 
-  <div class="gallery-grid">
+  <div class="gallery-grid" id="itemContainer">
 
-    <img src="soccer1.jpg" class="gallery-img" alt="Soccer 1">
-    <img src="soccer2.jpg" class="gallery-img" alt="Soccer 2">
-    <img src="soccer3.jpg" class="gallery-img" alt="Soccer 3">
-    <img src="soccer4.jpg" class="gallery-img" alt="Soccer 4">
-    <img src="soccer5.jpg" class="gallery-img" alt="Soccer 5">
-    <img src="soccer6.jpg" class="gallery-img" alt="Soccer 6">
-    <img src="soccer7.jpg" class="gallery-img" alt="Soccer 7">
-    <img src="soccer8.jpg" class="gallery-img" alt="Soccer 8">
-    <img src="soccer9.jpg" class="gallery-img" alt="Soccer 9">
-    <img src="soccer10.jpg" class="gallery-img" alt="Soccer 10">
-    <img src="soccer11.jpg" class="gallery-img" alt="Soccer 11">
-    <img src="soccer12.jpg" class="gallery-img" alt="Soccer 12">
-    <img src="soccer13.jpg" class="gallery-img" alt="Soccer 13">
-    <img src="soccer14.jpg" class="gallery-img" alt="Soccer 14">
-    <img src="soccer15.jpg" class="gallery-img" alt="Soccer 15">
+    <div class="item" data-category="action">
+      <img src="soccer1.jpg" class="gallery-img" alt="soccer action goal">
+      <p class="text-center">Goal Action Shot</p>
+    </div>
+
+    <div class="item" data-category="team">
+      <img src="soccer2.jpg" class="gallery-img" alt="team huddle">
+      <p class="text-center">Team Huddle</p>
+    </div>
+
+    <div class="item" data-category="portrait">
+      <img src="soccer3.jpg" class="gallery-img" alt="portrait">
+      <p class="text-center">Player Portrait</p>
+    </div>
+
+    <div class="item" data-category="action">
+      <img src="soccer4.jpg" class="gallery-img" alt="action shot">
+      <p class="text-center">Game Action</p>
+    </div>
+
+    <div class="item" data-category="team">
+      <img src="soccer5.jpg" class="gallery-img" alt="team celebration">
+      <p class="text-center">Team Celebration</p>
+    </div>
+
+    <div class="item" data-category="portrait">
+      <img src="soccer6.jpg" class="gallery-img" alt="athlete portrait">
+      <p class="text-center">Athlete Portrait</p>
+    </div>
+
+    <!-- continue same pattern for remaining images -->
 
   </div>
 </main>
@@ -156,13 +200,16 @@ closeBtn.onclick = function () {
   lightbox.style.display = "none";
 };
 
-// click outside image closes
+// click outside closes
 lightbox.onclick = function (e) {
   if (e.target === lightbox) {
     lightbox.style.display = "none";
   }
 };
 </script>
+
+<!-- YOUR CHAPTER 12 SCRIPT (IMPORTANT) -->
+<script src="script.js"></script>
 
 </body>
 </html>
