@@ -68,7 +68,7 @@
     </div>
 </section>
 
-<!-- CONTENT PANELS (CHAPTER 11) -->
+<!-- CONTENT PANELS -->
 <section class="container my-5">
     <h2 class="text-center mb-4">Photography Services</h2>
 
@@ -77,30 +77,21 @@
         <div class="panel">
             <button class="panel-btn">Sports Photography</button>
             <div class="panel-content">
-                <p>
-                    High-energy soccer coverage capturing real game moments, emotion, and movement.
-                    Perfect for teams, athletes, and tournaments.
-                </p>
+                <p>High-energy soccer coverage capturing real game moments, emotion, and movement.</p>
             </div>
         </div>
 
         <div class="panel">
             <button class="panel-btn">Team Coverage</button>
             <div class="panel-content">
-                <p>
-                    Full team sessions including pre-game, action shots, and sideline storytelling
-                    to highlight team identity and performance.
-                </p>
+                <p>Full team sessions including action shots and storytelling.</p>
             </div>
         </div>
 
         <div class="panel">
             <button class="panel-btn">Portrait & Branding</button>
             <div class="panel-content">
-                <p>
-                    Clean, professional athlete portraits designed for social media, recruiting,
-                    and personal branding.
-                </p>
+                <p>Professional athlete portraits for social media and recruiting.</p>
             </div>
         </div>
 
@@ -121,14 +112,53 @@
     </div>
 </section>
 
+<!-- CHAPTER 12: FILTER / SEARCH / SORT -->
+<section class="container my-5 text-center">
+
+    <h2 class="mb-3">Browse Soccer Photos</h2>
+
+    <!-- SEARCH -->
+    <input 
+        type="text" 
+        id="searchInput" 
+        class="form-control mb-3" 
+        placeholder="Search photos (goal, team, portrait, action)"
+    >
+
+    <!-- FILTER BUTTONS -->
+    <div class="mb-3">
+        <button class="btn btn-outline-dark btn-sm" onclick="filterItems('all')">All</button>
+        <button class="btn btn-outline-dark btn-sm" onclick="filterItems('action')">Action</button>
+        <button class="btn btn-outline-dark btn-sm" onclick="filterItems('team')">Team</button>
+        <button class="btn btn-outline-dark btn-sm" onclick="filterItems('portrait')">Portrait</button>
+    </div>
+
+    <!-- SORT -->
+    <button class="btn btn-primary btn-sm" onclick="sortItems()">Sort A-Z</button>
+
+</section>
+
 <!-- GALLERY -->
 <main class="container my-5">
     <h2 class="text-center mb-4">Soccer Photography Highlights</h2>
 
-    <div class="row g-4">
-        <div class="col-md-4"><img src="soccer1.jpg" class="img-fluid rounded shadow"></div>
-        <div class="col-md-4"><img src="soccer10.jpg" class="img-fluid rounded shadow"></div>
-        <div class="col-md-4"><img src="soccer11.jpg" class="img-fluid rounded shadow"></div>
+    <div id="itemContainer" class="row g-4">
+
+        <div class="col-md-4 item" data-category="action">
+            <img src="soccer1.jpg" class="img-fluid rounded shadow" alt="">
+            <p class="text-center mt-2">Goal Action Shot</p>
+        </div>
+
+        <div class="col-md-4 item" data-category="team">
+            <img src="soccer10.jpg" class="img-fluid rounded shadow" alt="">
+            <p class="text-center mt-2">Team Huddle</p>
+        </div>
+
+        <div class="col-md-4 item" data-category="portrait">
+            <img src="soccer11.jpg" class="img-fluid rounded shadow" alt="">
+            <p class="text-center mt-2">Player Portrait</p>
+        </div>
+
     </div>
 </main>
 
