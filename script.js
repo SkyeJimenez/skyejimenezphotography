@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("Gallery script loaded");
 
     // =========================
-    // SEARCH FUNCTION (FIXED)
+    // SEARCH FUNCTION
     // =========================
     const searchInput = document.getElementById("searchInput");
 
@@ -27,9 +27,8 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-
     // =========================
-    // FILTER FUNCTION (FIXED)
+    // FILTER FUNCTION
     // =========================
     window.filterItems = function (category) {
 
@@ -47,9 +46,8 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     };
 
-
     // =========================
-    // SORT A-Z (FIXED)
+    // SORT A-Z
     // =========================
     window.sortItems = function () {
 
@@ -57,13 +55,59 @@ document.addEventListener("DOMContentLoaded", function () {
         const items = Array.from(document.querySelectorAll(".item"));
 
         items.sort((a, b) => {
-
-            return a.innerText.toLowerCase()
-                .localeCompare(b.innerText.toLowerCase());
-
+            return a.innerText.toLowerCase().localeCompare(b.innerText.toLowerCase());
         });
 
         items.forEach(item => container.appendChild(item));
     };
+
+
+    // =========================
+    // CHAPTER 13 FORM VALIDATION (ADDED)
+    // =========================
+    const form = document.getElementById("contactForm");
+
+    if (form) {
+
+        form.addEventListener("submit", function (event) {
+
+            let errorMsg = "";
+
+            const name = document.getElementById("name")?.value.trim();
+            const email = document.getElementById("email")?.value.trim();
+            const message = document.getElementById("message")?.value.trim();
+
+            // Validate Name
+            if (!name) {
+                errorMsg += "Name is required. ";
+            }
+
+            // Validate Email
+            if (!email) {
+                errorMsg += "Email is required. ";
+            } else if (!email.includes("@")) {
+                errorMsg += "Enter a valid email address. ";
+            }
+
+            // Validate Message
+            if (!message) {
+                errorMsg += "Message is required. ";
+            }
+
+            // Show errors or submit
+            const errorDisplay = document.getElementById("errorMsg");
+
+            if (errorMsg !== "") {
+                event.preventDefault();
+                if (errorDisplay) {
+                    errorDisplay.textContent = errorMsg;
+                }
+            } else {
+                if (errorDisplay) {
+                    errorDisplay.textContent = "";
+                }
+            }
+        });
+    }
 
 });
