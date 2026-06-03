@@ -8,7 +8,6 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
 <style>
-
 /* ===== GRID LAYOUT ===== */
 .gallery-grid {
   display: grid;
@@ -20,9 +19,8 @@
 .gallery-img {
   width: 100%;
   height: 250px;
-  object-fit: contain;
+  object-fit: cover;
   background: #f8f9fa;
-  padding: 5px;
   border-radius: 6px;
   cursor: pointer;
   transition: transform 0.3s ease;
@@ -73,7 +71,6 @@
 .search-box {
   margin-bottom: 20px;
 }
-
 </style>
 </head>
 
@@ -100,20 +97,20 @@
   </div>
 </nav>
 
-<!-- SEARCH + CONTROLS -->
+<!-- CONTROLS -->
 <div class="container my-4 text-center">
 
   <h2 class="mb-3">Photo Gallery</h2>
 
   <!-- SEARCH -->
-  <input 
-    type="text" 
-    id="searchInput" 
+  <input
+    type="text"
+    id="searchInput"
     class="form-control search-box"
     placeholder="Search photos..."
   >
 
-  <!-- FILTER BUTTONS -->
+  <!-- FILTER -->
   <div class="mb-3">
     <button class="btn btn-outline-dark btn-sm" onclick="filterItems('all')">All</button>
     <button class="btn btn-outline-dark btn-sm" onclick="filterItems('action')">Action</button>
@@ -122,7 +119,7 @@
   </div>
 
   <!-- SORT -->
-  <button class="btn btn-primary btn-sm" onclick="sortItems()">Sort A-Z</button>
+  <button class="btn btn-primary btn-sm" onclick="sortItems()">Sort A–Z</button>
 
 </div>
 
@@ -132,32 +129,32 @@
   <div class="gallery-grid" id="itemContainer">
 
     <div class="item" data-category="action">
-      <img src="soccer1.jpg" class="gallery-img" alt="soccer action goal">
+      <img src="soccer1.jpg" class="gallery-img" alt="Goal Action Shot">
       <p class="text-center">Goal Action Shot</p>
     </div>
 
     <div class="item" data-category="team">
-      <img src="soccer2.jpg" class="gallery-img" alt="team huddle">
+      <img src="soccer2.jpg" class="gallery-img" alt="Team Huddle">
       <p class="text-center">Team Huddle</p>
     </div>
 
     <div class="item" data-category="portrait">
-      <img src="soccer3.jpg" class="gallery-img" alt="portrait">
+      <img src="soccer3.jpg" class="gallery-img" alt="Player Portrait">
       <p class="text-center">Player Portrait</p>
     </div>
 
     <div class="item" data-category="action">
-      <img src="soccer4.jpg" class="gallery-img" alt="action shot">
+      <img src="soccer4.jpg" class="gallery-img" alt="Game Action">
       <p class="text-center">Game Action</p>
     </div>
 
     <div class="item" data-category="team">
-      <img src="soccer5.jpg" class="gallery-img" alt="team celebration">
+      <img src="soccer5.jpg" class="gallery-img" alt="Team Celebration">
       <p class="text-center">Team Celebration</p>
     </div>
 
     <div class="item" data-category="portrait">
-      <img src="soccer6.jpg" class="gallery-img" alt="athlete portrait">
+      <img src="soccer6.jpg" class="gallery-img" alt="Athlete Portrait">
       <p class="text-center">Athlete Portrait</p>
     </div>
 
@@ -180,29 +177,33 @@
 
 <!-- LIGHTBOX SCRIPT -->
 <script>
-const lightbox = document.getElementById("lightbox");
-const lightboxImg = document.getElementById("lightbox-img");
-const closeBtn = document.querySelector(".close");
+document.addEventListener("DOMContentLoaded", function () {
 
-document.querySelectorAll(".gallery-img").forEach(img => {
-  img.addEventListener("click", function () {
-    lightbox.style.display = "flex";
-    lightboxImg.src = this.src;
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
+  const closeBtn = document.querySelector(".close");
+
+  document.querySelectorAll(".gallery-img").forEach(img => {
+    img.addEventListener("click", function () {
+      lightbox.style.display = "flex";
+      lightboxImg.src = this.src;
+    });
   });
-});
 
-closeBtn.onclick = function () {
-  lightbox.style.display = "none";
-};
-
-lightbox.onclick = function (e) {
-  if (e.target === lightbox) {
+  closeBtn.addEventListener("click", function () {
     lightbox.style.display = "none";
-  }
-};
+  });
+
+  lightbox.addEventListener("click", function (e) {
+    if (e.target === lightbox) {
+      lightbox.style.display = "none";
+    }
+  });
+
+});
 </script>
 
-<!-- YOUR MAIN SCRIPT (FIXED PATH) -->
+<!-- MAIN JS -->
 <script src="script.js"></script>
 
 </body>
