@@ -1,147 +1,69 @@
-$(function () {
+document.addEventListener("DOMContentLoaded", function () {
 
-    console.log("Skye Jimenez Photography site loaded");
-
-    // =========================
-    // HERO GREETING
-    // =========================
-    const hour = new Date().getHours();
-    let greeting = "";
-
-    if (hour < 12) {
-        greeting = "Good Morning! Welcome to Skye Jimenez Photography 🌅";
-    } else if (hour < 18) {
-        greeting = "Good Afternoon! Thanks for stopping by ☀️";
-    } else {
-        greeting = "Good Evening! Hope you enjoy your visit 🌙";
-    }
-
-    $("#greeting")
-        .text(greeting)
-        .hide()
-        .fadeIn(1000);
-
+    console.log("Gallery script loaded");
 
     // =========================
-    // BOOKING BUTTON
+    // SEARCH FUNCTION (FIXED)
     // =========================
-    $("#event-btn").on("click", function () {
+    const searchInput = document.getElementById("searchInput");
 
-        $("#feedback")
-            .stop(true, true)
-            .text("Thanks! Your booking request has been received.")
-            .css({
-                color: "#0d6efd",
-                fontWeight: "bold"
-            })
-            .hide()
-            .fadeIn(600);
+    if (searchInput) {
 
-        $(this)
-            .text("Request Sent ✔")
-            .prop("disabled", true);
-    });
+        searchInput.addEventListener("keyup", function () {
 
+            const value = this.value.toLowerCase().trim();
+            const items = document.querySelectorAll(".item");
 
-    // =========================
-    // API QUOTES
-    // =========================
-    function loadQuote() {
+            items.forEach(item => {
 
-        const api1 = "https://dummyjson.com/quotes/random";
-        const api2 = "https://api.quotable.io/random";
+                const text = item.innerText.toLowerCase();
 
-        $.getJSON(api1)
-            .done(function (data) {
-                $("#quote").text(`"${data.quote}" — ${data.author}`);
-            })
-            .fail(function () {
-
-                $.getJSON(api2)
-                    .done(function (data) {
-                        $("#quote").text(`"${data.content}" — ${data.author}`);
-                    })
-                    .fail(function () {
-                        $("#quote").text("Quote unavailable right now.");
-                    });
-
+                if (text.includes(value)) {
+                    item.style.display = "block";
+                } else {
+                    item.style.display = "none";
+                }
             });
+        });
     }
 
-    loadQuote();
-
-    $("#quote-btn").on("click", function () {
-        loadQuote();
-    });
-
 
     // =========================
-    // CONTENT PANELS
-    // =========================
-    $(".panel-btn").on("click", function () {
-
-        const content = $(this).next(".panel-content");
-
-        $(".panel-content").not(content).slideUp(200);
-
-        content.stop(true, true).slideToggle(250);
-    });
-
-
-    // =========================
-    // CHAPTER 12: SEARCH (FIXED)
-    // =========================
-    $("#searchInput").on("keyup", function () {
-
-        const value = $(this).val().toLowerCase();
-
-        $(".item").each(function () {
-
-            const text = $(this).text().toLowerCase();
-
-            if (text.indexOf(value) > -1) {
-                $(this).show();
-            } else {
-                $(this).hide();
-            }
-        });
-    });
-
-
-    // =========================
-    // CHAPTER 12: FILTER (FIXED)
+    // FILTER FUNCTION (FIXED)
     // =========================
     window.filterItems = function (category) {
 
-        $(".item").each(function () {
+        const items = document.querySelectorAll(".item");
 
-            const itemCategory = $(this).data("category");
+        items.forEach(item => {
+
+            const itemCategory = item.getAttribute("data-category");
 
             if (category === "all" || itemCategory === category) {
-                $(this).show();
+                item.style.display = "block";
             } else {
-                $(this).hide();
+                item.style.display = "none";
             }
         });
     };
 
 
     // =========================
-    // CHAPTER 12: SORT A-Z
+    // SORT A-Z (FIXED)
     // =========================
     window.sortItems = function () {
 
-        const container = $("#itemContainer");
-        const items = $(".item").get();
+        const container = document.getElementById("itemContainer");
+        const items = Array.from(document.querySelectorAll(".item"));
 
-        items.sort(function (a, b) {
-            return $(a).text().toLowerCase()
-                .localeCompare($(b).text().toLowerCase());
+        items.sort((a, b) => {
+
+            return a.innerText.toLowerCase()
+                .localeCompare(b.innerText.toLowerCase());
+
         });
 
-        $.each(items, function (i, item) {
-            container.append(item);
-        });
+        items.forEach(item => container.appendChild(item));
     };
 
 });
