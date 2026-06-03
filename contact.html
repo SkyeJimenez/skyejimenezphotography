@@ -4,17 +4,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contact - Skye Jimenez Photography</title>
+
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
     <a class="navbar-brand" href="index.html">Skye Jimenez Photography</a>
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
     </button>
+
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
@@ -29,19 +33,28 @@
 
 <main class="container my-5">
   <h2 class="text-center mb-4">Contact Me</h2>
-  <form action="#" method="POST" class="mx-auto" style="max-width:500px;">
+
+  <!-- ✅ Added ID for validation -->
+  <form id="contactForm" class="mx-auto" style="max-width:500px;">
+
     <div class="mb-3">
       <label for="name" class="form-label">Name</label>
-      <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required>
+      <input type="text" class="form-control" id="name" placeholder="Your Name">
     </div>
+
     <div class="mb-3">
       <label for="email" class="form-label">Email</label>
-      <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com" required>
+      <input type="email" class="form-control" id="email" placeholder="you@example.com">
     </div>
+
     <div class="mb-3">
       <label for="message" class="form-label">Message</label>
-      <textarea class="form-control" id="message" name="message" rows="5" placeholder="Your message..." required></textarea>
+      <textarea class="form-control" id="message" rows="5" placeholder="Your message..."></textarea>
     </div>
+
+    <!-- Error message display -->
+    <p id="errorMsg" class="text-danger"></p>
+
     <button type="submit" class="btn btn-primary w-100">Send Message</button>
   </form>
 </main>
@@ -51,5 +64,38 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- ✅ FORM VALIDATION SCRIPT (Chapter 13) -->
+<script>
+document.getElementById("contactForm").addEventListener("submit", function(event) {
+    let errorMsg = "";
+
+    let name = document.getElementById("name").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let message = document.getElementById("message").value.trim();
+
+    if (name === "") {
+        errorMsg += "Name is required. ";
+    }
+
+    if (email === "") {
+        errorMsg += "Email is required. ";
+    } else if (!email.includes("@")) {
+        errorMsg += "Enter a valid email. ";
+    }
+
+    if (message === "") {
+        errorMsg += "Message is required. ";
+    }
+
+    if (errorMsg !== "") {
+        event.preventDefault();
+        document.getElementById("errorMsg").textContent = errorMsg;
+    } else {
+        document.getElementById("errorMsg").textContent = "";
+    }
+});
+</script>
+
 </body>
 </html>
