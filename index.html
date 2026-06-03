@@ -112,29 +112,42 @@
     </div>
 </section>
 
-<!-- CHAPTER 12 CONTROLS -->
+<!-- CHAPTER 12: FILTERING, SEARCHING, SORTING -->
 <section class="container my-5 text-center">
 
-    <h2 class="mb-3">Browse Soccer Photos</h2>
+    <h2 class="mb-4">Browse Soccer Photos</h2>
 
     <!-- SEARCH -->
-    <input 
-        type="text" 
-        id="searchInput" 
-        class="form-control mb-3" 
+    <input
+        type="text"
+        id="searchInput"
+        class="form-control mb-3"
         placeholder="Search photos..."
     >
 
-    <!-- FILTER -->
+    <!-- FILTER BUTTONS -->
     <div class="mb-3">
-        <button class="btn btn-outline-dark btn-sm" onclick="filterItems('all')">All</button>
-        <button class="btn btn-outline-dark btn-sm" onclick="filterItems('action')">Action</button>
-        <button class="btn btn-outline-dark btn-sm" onclick="filterItems('team')">Team</button>
-        <button class="btn btn-outline-dark btn-sm" onclick="filterItems('portrait')">Portrait</button>
+        <button class="btn btn-outline-dark btn-sm" onclick="filterItems('all')">
+            All
+        </button>
+
+        <button class="btn btn-outline-dark btn-sm" onclick="filterItems('action')">
+            Action
+        </button>
+
+        <button class="btn btn-outline-dark btn-sm" onclick="filterItems('team')">
+            Team
+        </button>
+
+        <button class="btn btn-outline-dark btn-sm" onclick="filterItems('portrait')">
+            Portrait
+        </button>
     </div>
 
     <!-- SORT -->
-    <button class="btn btn-primary btn-sm" onclick="sortItems()">Sort A-Z</button>
+    <button class="btn btn-primary btn-sm" onclick="sortItems()">
+        Sort A-Z
+    </button>
 
 </section>
 
@@ -145,28 +158,44 @@
 
     <div id="itemContainer" class="row g-4">
 
-        <div class="col-md-4 item" data-category="action">
-            <div class="card p-2">
-                <img src="soccer1.jpg" class="img-fluid rounded" alt="action shot">
-                <p class="text-center mt-2">Player Portrait/p>
-            </div>
-        </div>
-
-        <div class="col-md-4 item" data-category="team">
-            <div class="card p-2">
-                <img src="soccer10.jpg" class="img-fluid rounded" alt="team shot">
-                <p class="text-center mt-2">Team</p>
-            </div>
-        </div>
-
+        <!-- PORTRAIT -->
         <div class="col-md-4 item" data-category="portrait">
-            <div class="card p-2">
-                <img src="soccer11.jpg" class="img-fluid rounded" alt="portrait">
-                <p class="text-center mt-2">Tournament</p>
+            <div class="card h-100 shadow-sm">
+                <img src="soccer1.jpg"
+                     class="card-img-top"
+                     alt="Player Portrait">
+                <div class="card-body">
+                    <h5 class="card-title">Player Portrait</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- TEAM -->
+        <div class="col-md-4 item" data-category="team">
+            <div class="card h-100 shadow-sm">
+                <img src="soccer10.jpg"
+                     class="card-img-top"
+                     alt="Team Coverage">
+                <div class="card-body">
+                    <h5 class="card-title">Team Coverage</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- ACTION -->
+        <div class="col-md-4 item" data-category="action">
+            <div class="card h-100 shadow-sm">
+                <img src="soccer11.jpg"
+                     class="card-img-top"
+                     alt="Tournament Action">
+                <div class="card-body">
+                    <h5 class="card-title">Tournament Action</h5>
+                </div>
             </div>
         </div>
 
     </div>
+
 </main>
 
 <!-- FOOTER -->
