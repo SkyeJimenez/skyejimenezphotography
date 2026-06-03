@@ -2,9 +2,9 @@ $(function () {
 
     console.log("Skye Jimenez Photography site loaded");
 
-    // -------------------------
-    // CHAPTER 7: TIME GREETING
-    // -------------------------
+    // =========================
+    // HERO GREETING
+    // =========================
     const hour = new Date().getHours();
     let greeting = "";
 
@@ -22,14 +22,14 @@ $(function () {
         .fadeIn(1000);
 
 
-    // -------------------------
-    // CHAPTER 8: BUTTON INTERACTION
-    // -------------------------
+    // =========================
+    // BOOKING BUTTON
+    // =========================
     $("#event-btn").on("click", function () {
 
         $("#feedback")
             .stop(true, true)
-            .text("Thanks! Your booking request has been received. I will contact you soon.")
+            .text("Thanks! Your booking request has been received.")
             .css({
                 color: "#0d6efd",
                 fontWeight: "bold"
@@ -43,9 +43,9 @@ $(function () {
     });
 
 
-    // -------------------------
-    // CHAPTER 9/10: API QUOTES
-    // -------------------------
+    // =========================
+    // API QUOTES
+    // =========================
     function loadQuote() {
 
         const api1 = "https://dummyjson.com/quotes/random";
@@ -62,7 +62,7 @@ $(function () {
                         $("#quote").text(`"${data.content}" — ${data.author}`);
                     })
                     .fail(function () {
-                        $("#quote").text("Quote unavailable right now. Try again later.");
+                        $("#quote").text("Quote unavailable right now.");
                     });
 
             });
@@ -75,9 +75,9 @@ $(function () {
     });
 
 
-    // -------------------------
-    // CHAPTER 11: CONTENT PANELS
-    // -------------------------
+    // =========================
+    // CONTENT PANELS
+    // =========================
     $(".panel-btn").on("click", function () {
 
         const content = $(this).next(".panel-content");
@@ -88,56 +88,41 @@ $(function () {
     });
 
 
-    // -------------------------
-    // BONUS: GALLERY HOVER EFFECT
-    // -------------------------
-    $(".row img")
-        .css("opacity", "0.85")
-        .hover(
-            function () {
-                $(this).fadeTo(200, 1);
-            },
-            function () {
-                $(this).fadeTo(200, 0.85);
-            }
-        );
-
-
     // =========================
-    // CHAPTER 12: SEARCH
+    // CHAPTER 12: SEARCH (FIXED)
     // =========================
     $("#searchInput").on("keyup", function () {
 
         const value = $(this).val().toLowerCase();
 
-        $(".item").filter(function () {
+        $(".item").each(function () {
 
             const text = $(this).text().toLowerCase();
-            $(this).toggle(text.indexOf(value) > -1);
 
+            if (text.indexOf(value) > -1) {
+                $(this).show();
+            } else {
+                $(this).hide();
+            }
         });
     });
 
 
     // =========================
-    // CHAPTER 12: FILTER BUTTONS
+    // CHAPTER 12: FILTER (FIXED)
     // =========================
     window.filterItems = function (category) {
 
-        if (category === "all") {
-            $(".item").fadeIn(200);
-        } else {
-            $(".item").each(function () {
+        $(".item").each(function () {
 
-                const match = $(this).data("category") === category;
+            const itemCategory = $(this).data("category");
 
-                if (match) {
-                    $(this).fadeIn(200);
-                } else {
-                    $(this).fadeOut(200);
-                }
-            });
-        }
+            if (category === "all" || itemCategory === category) {
+                $(this).show();
+            } else {
+                $(this).hide();
+            }
+        });
     };
 
 
@@ -154,7 +139,7 @@ $(function () {
                 .localeCompare($(b).text().toLowerCase());
         });
 
-        $.each(items, function (index, item) {
+        $.each(items, function (i, item) {
             container.append(item);
         });
     };
